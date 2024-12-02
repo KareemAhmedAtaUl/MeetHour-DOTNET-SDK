@@ -19,7 +19,7 @@ namespace meethour.webhook
         public Dictionary<string, object> HandleRequest(string requestBody, Dictionary<string, string> headers)
         {
             var payload = requestBody;
-            headers.TryGetValue("HTTP_MEETHOUR_SIGNATURE", out var signature);
+            headers.TryGetValue("X-Signature", out var signature);
 
             if (signature != null && ValidateSignature(payload, signature))
             {
